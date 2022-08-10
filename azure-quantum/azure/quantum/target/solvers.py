@@ -50,11 +50,6 @@ class RangeSchedule:
                 '"schedule_type" must be "linear" or "geometric"!'
             )
 
-proto_valid_solver_names = [
-    "PopulationAnnealing",
-    "SubstochasticMonteCarlo"
-]
-
 class Solver(Target):
     def __init__(
         self,
@@ -237,7 +232,7 @@ class Solver(Target):
                     f"Try PopulationAnnealing or SubstochasticMonteCarlo."
                 )
         if problem.content_type == ContentType.protobuf:
-            if not self.supports_protobuf() and self.name not in proto_valid_solver_names:
+            if not self.supports_protobuf():
                 raise ValueError(
                     f"Solver `{self.name} type is not compatible "
                     f"for serialization with protobuf; "

@@ -19,7 +19,6 @@ def testsolver():
     mock_ws = Mock(spec=Workspace)
     mock_ws.storage = "mock_storage"
     mock_ws.get_container_uri = Mock(return_value="mock_container_uri/foo/bar")
-    # self.mock_ws.submit_job = Mock(return_value = )
     testsolver = Solver(
         mock_ws, "Microsoft", "SimulatedAnnealing", "json", "json"
     )
@@ -30,7 +29,6 @@ def testprotosolver():
     mock_ws = Mock(spec=Workspace)
     mock_ws.storage = "mock_storage"
     mock_ws.get_container_uri = Mock(return_value="mock_container_uri/foo/bar")
-    # self.mock_ws.submit_job = Mock(return_value = )
     testsolver = Solver(
         mock_ws, "PopulationAnnealing"
     )
@@ -69,7 +67,6 @@ def test_submit_proto_problem(testprotosolver):
         testprotosolver.workspace.submit_job.assert_called_once()
 
 def test_submit_large_proto_problem(testprotosolver):
-
         problem = Problem(name = "proto_test", content_type=ContentType.protobuf)
         terms = []
         for i in range (0,3000):
